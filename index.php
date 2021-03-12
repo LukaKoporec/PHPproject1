@@ -1,24 +1,21 @@
 <?php
-//include Config
+// Include Config
 require('config.php');
 
-require('Classes/Bootstrap.php');
-require('Classes/Controller.php');
-require('Classes/Model.php');
+require('classes/Bootstrap.php');
+require('classes/Controller.php');
+require('classes/Model.php');
 
+require('controllers/home.php');
+require('controllers/shares.php');
+require('controllers/users.php');
 
-require('Controllers/home.php');
-require('Controllers/shares.php');
-require('Controllers/users.php');
-
-require('Models/home.php');
-require('Models/share.php');
-require('Models/user.php');
+require('models/home.php');
+require('models/share.php');
+require('models/user.php');
 
 $bootstrap = new Bootstrap($_GET);
 $controller = $bootstrap->createController();
-if ($controller) {
-  $controller->executeAction();
-
+if($controller){
+	$controller->executeAction();
 }
-?>
