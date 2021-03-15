@@ -21,4 +21,28 @@ class UserModel extends Model{
 		}
 		return;
 	}
+	public function login(){
+		// Sanitize POST
+		$post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+		$password = md5($post['password']);
+
+		if($post['submit']){
+			// Compare Login
+			$this->query('SELECT * FROM users WHERE email = :email AND password =:password');
+			$this->bind(':email', $post['Email']);
+			$this->bind(':password', $password);
+			
+			$row = $this->single();
+
+			if($row){
+				echo 'Logged in';
+				
+			}
+			else {
+				echo 'Incorrect Login';
+			}
+		}
+		return;
+	}
 }
