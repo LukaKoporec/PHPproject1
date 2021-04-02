@@ -12,7 +12,7 @@ class ShareModel extends Model{
 
 		if($post['submit']){
 
-			if($post['title'] == '' || $post['body'] == ''|| $post['link'] == '' ){
+			if($post['title'] === '' || $post['body'] === '' || $post['link'] === '' ){
 				Messages::setMsg('Please fill in all fields', 'error');
 				return;
 			}
