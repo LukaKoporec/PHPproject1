@@ -36,7 +36,9 @@ class UserModel extends Model{
 
 		$password = md5($post['password']);
 
-		if($post['submit']){
+		if(!$post['submit']) {
+		    return;
+		}
 			// Compare Login
 			$this->query('SELECT * FROM users WHERE email = :email AND password =:password');
 			$this->bind(':email', $post['Email']);
