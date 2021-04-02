@@ -6,7 +6,7 @@ class Shares extends Controller{
 	}
 
 	protected function add(){
-		if(!isset($_SESSION['is_logged_in'])){
+		if(!isset($_SESSION['is_logged_in'])) {
 			header('Location: '.ROOT_URL. 'shares');
 		}
 		$viewmodel = new ShareModel();
