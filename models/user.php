@@ -46,11 +46,11 @@ class UserModel extends Model{
 
 			if($row){
 				$_SESSION['is_logged_in'] = true;
-				$_SESSION['user_data'] = array(
+				$_SESSION['user_data'] = [
 					"id" => $row['id'],
 					"name" => $row['name'],
 					"email" => $row['email']
-				);
+				];
 				header('Location: '.ROOT_URL.'shares');
 			}
 			else {
