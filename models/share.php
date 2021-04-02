@@ -1,12 +1,12 @@
 <?php
-class ShareModel extends Model{
-	public function Index(){
+class ShareModel extends Model {
+	public function Index() {
 		$this->query('SELECT * FROM shares ORDER BY create_date DESC');
 		$rows = $this->resultSet();
 		return $rows;
 	}
 
-	public function add(){
+	public function add() {
 		// Sanitize POST
 		$post = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -14,7 +14,7 @@ class ShareModel extends Model{
 		    return;
 		}
 
-			if($post['title'] === '' || $post['body'] === '' || $post['link'] === '' ){
+			if($post['title'] === '' || $post['body'] === '' || $post['link'] === '' ) {
 				Messages::setMsg('Please fill in all fields', 'error');
 				return;
 			}
@@ -27,7 +27,7 @@ class ShareModel extends Model{
 			$this->bind(':user_id', 1);
 			$this->execute();
 			// Verify
-			if($this->lastInsertId()){
+			if($this->lastInsertId()) {
 				// Redirect
 				header('Location: '.ROOT_URL.'shares');
 			}
