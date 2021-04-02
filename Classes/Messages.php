@@ -1,11 +1,8 @@
 <?php
 class Messages{
     public static function setMsg(string $text, string $type): void {
-        if($type = 'error'){
-            $_SESSION['errorMsg'] = $text;
-        } else {
-            $_SESSION['successMsg'] = $text;
-        }
+      $sessionKey = $type === 'error' ? 'errorMsg' : 'successMsg';
+      $_SESSION[$sessionKey] = $text;
 
     }
 
